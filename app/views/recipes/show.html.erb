@@ -5,6 +5,7 @@
     <div class="col-md-8">
         <h1><%= @recipe.title %></h1>
         <p><%= @recipe.description %></p>
+        <p>Submited by <%= @recipe.user.email %></p>
     </div>
     <div class="row">
         <div class="col-md-6">
@@ -25,8 +26,10 @@
     <div class="row">
         <div class="col-md-12">
             <%= link_to "Back", root_path %>
-            <%= link_to "Edit", edit_recipe_path %>
-            <%= link_to "Delete", recipe_path, method: :delete, data: { confirm: "Are you sure?" } %>
+            <% if user_signed_in? %>
+                <%= link_to "Edit", edit_recipe_path %>
+                <%= link_to "Delete", recipe_path, method: :delete, data: { confirm: "Are you sure?" } %>
+            <% end %>
         </div>
     </div>
 </div>
