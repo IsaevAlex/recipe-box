@@ -7,8 +7,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+    <header class="nav navbar navbar-default">
+       <div class="container">
+           <%= link_to "Recipe box", root_path, class:"navbar-brand" %>
+           <ul class="nav navbar-nav navbar-right">
+               <li><%= link_to "New Recipe", new_recipe_path %></li>
+               <li><%= link_to "Sign out", root_path %></li>
+           </ul>
+       </div>
+        
+        
+    </header>
+<div class="container">
+    <% flash.each do | name,msg | %>
+        <div class="alert">
+            <%=  msg %>
+        </div>
+    <% end %>
+    <%= yield %>
+</div>
 
 </body>
 </html>

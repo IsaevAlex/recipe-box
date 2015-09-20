@@ -1,0 +1,32 @@
+<div class="main-content">
+    <div class="col-md-4">
+        <%= image_tag @recipe.image.url(:medium, class:"recipe-image") %>
+    </div>
+    <div class="col-md-8">
+        <h1><%= @recipe.title %></h1>
+        <p><%= @recipe.description %></p>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Ingredients</h2>
+            <% @recipe.ingredients.each do |ingredient| %>
+               <p><%= ingredient.name %></p>
+            <% end %>
+        </div>
+        <div class="col-md-6">
+            <h2>Directions</h2>
+            <ul>
+                <% @recipe.directions.each do |direction| %>
+                    <li><%= direction.step %></li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <%= link_to "Back", root_path %>
+            <%= link_to "Edit", edit_recipe_path %>
+            <%= link_to "Delete", recipe_path, method: :delete, data: { confirm: "Are you sure?" } %>
+        </div>
+    </div>
+</div>
